@@ -244,7 +244,8 @@ document.addEventListener(`DOMContentLoaded`, () => {
               <img class="section__img section__img-margin-top " src="${match.dog.Image}" alt="Hund">
               <h3 class="section__title">${match.owner.name} &#x2764;&#xFE0F; ${match.dog.name}</h3>
               <p class="section__text">${match.owner.text}</p>
-              <p class="section__text"> ${match.dog.text}</p>`;
+              <p class="section__text">&</p>
+              <p class="section__text section__text--bottom"> ${match.dog.text}</p>`;
 
         matchSection.innerHTML = foundMatch;
         matchContainerRef.appendChild(matchSection);

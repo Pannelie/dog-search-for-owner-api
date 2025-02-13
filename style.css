@@ -159,6 +159,10 @@ button:hover {
 .section__text {
   color: white;
   text-align: center;
+  margin-top: 0.4rem;
+}
+
+.section__text--bottom {
   margin-bottom: 2rem;
 }
 
