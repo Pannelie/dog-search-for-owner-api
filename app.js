@@ -37,6 +37,8 @@ function resetGame() {
 
   ownerContainerRef.style.backgroundColor = "";
   dogContainerRef.style.backgroundColor = "";
+
+  document.querySelector(`#perfectMatch`).classList.remove(`show`);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -45,7 +47,13 @@ document.addEventListener("DOMContentLoaded", () => {
   //   const ownerBtn = document.querySelector("#ownerBtn");
 
   function randomBg() {
-    let colors = [`#F8BBD0`, `#B3E5FC`, `#C8E6C9`, `#FFECB3`, `#D1C4E9`];
+    let colors = [
+      `#D32F2F`, // Mörk röd för bra kontrast
+      `#1976D2`, // Mörk blå för bra kontrast
+      `#388E3C`, // Mörk grön för bra kontrast
+      `#FBC02D`, // Mörkare gul för bra kontrast
+      `#7B1FA2`, // Mörk lila för bra kontrast
+    ];
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
@@ -190,7 +198,8 @@ document.addEventListener("DOMContentLoaded", () => {
       oGameData.dogColor === oGameData.ownerColor ||
       oGameData.selectedDogIndex === oGameData.selectedOwnerIndex
     ) {
-      document.querySelector(`#perfectMatch`).classList.remove(`d-none`);
+      document.querySelector(`#perfectMatch`).classList.add(`show`);
+
       ownerBtn.classList.add(`d-none`);
       dogBtn.classList.add(`d-none`);
       console.log(`Perfect match!`);

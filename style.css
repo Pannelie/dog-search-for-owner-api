@@ -16,11 +16,14 @@ h1 {
 body {
   background-color: #bedae7;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header {
-  background-color: #5dade2;
-  /* height: 10%; */
+  background-color: #bedae7;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -52,6 +55,7 @@ a:hover {
 .main__wrapper,
 .match__container {
   height: 70%;
+  width: 80%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 1rem;
@@ -70,24 +74,27 @@ a:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 8rem;
+  transform: translate(-50%, -50%) scale(0.5); /* Starta lite mindre */
+  opacity: 0; /* Osynlig från början */
+  transition: transform 2.5s ease-out, opacity 2.5s ease-in;
+}
+
+.show {
+  transform: translate(-50%, -50%) scale(9); /* Väx till storlek 3x */
+  opacity: 1; /* Gör elementet synligt */
 }
 
 button {
   background-color: rgb(255, 255, 255);
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-
   border-radius: 10px;
   color: #5dade2;
-  /* color: #472fa3; */
   font-weight: 600;
   border: none;
   cursor: pointer;
   width: 200px;
 }
 button:hover {
-  /* background-color: #472fa3; */
   background-color: #5dade2;
   color: white;
 }
