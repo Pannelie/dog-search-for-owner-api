@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Match a dog with it´s perfect owner</title>
+    <script type="module" src="./app.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="main__title">
+        Hjälp en hundlös person att hitta sin drömhund!
+      </h1>
+      <nav class="navbar">
+        <ul class="navigation__list">
+          <li class="navigation__list-item"><a href="./index.html">Hem</a></li>
+          <li class="navigation__list-item">
+            <a href="./earlier-matching.html">Lyckade matchningar</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main__wrapper">
+      <p id="perfectMatch" class="perfect-match d-none">&#x2764;&#xFE0F;</p>
+      <button id="mainBtn" class="main__btn">Starta matchningen!</button>
+
+      <section
+        id="ownerContainer"
+        class="section__container section__container--owner d-none"
+      >
+        <button id="ownerBtn" class="owner__btn">Hitta en ägare</button>
+        <img
+          src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MDkxNzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE3Mzk0NTMwMTN8&ixlib=rb-4.0.3&q=85"
+          id="ownerImg"
+          alt="Person som söker en hund"
+          class="section__img section__img--owner d-none"
+        />
+        <h2 id="ownerTitle" class="section__title d-none"></h2>
+        <p id="ownerText" class="section__text d-none"></p>
+      </section>
+
+      <section
+        id="dogContainer"
+        class="section__container section__container--dog d-none"
+      >
+        <button id="dogBtn" class="dog__btn">Hitta hunden!</button>
+        <img
+          src="https://images.unsplash.com/photo-1629740067905-bd3f515aa739?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MDkxNzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE3Mzk0NTMyNjR8&ixlib=rb-4.0.3&q=85"
+          id="dogImg"
+          alt="Hund till adoption"
+          class="section__img section__img--dog d-none"
+        />
+        <h2 id="dogName" class="section__title d-none">Fido</h2>
+        <p id="dogText" class="section__text d-none">VOFF!</p>
+      </section>
+    </main>
+  </body>
+</html>
