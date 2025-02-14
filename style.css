@@ -54,6 +54,7 @@ a:hover {
 
 .main__wrapper,
 .match__container {
+  position: relative;
   height: 70%;
   width: 80%;
   display: grid;
@@ -106,6 +107,12 @@ button:hover {
   transform: translate(-50%, -50%);
   font-size: 1rem;
   padding: 1rem;
+  opacity: 0; /* Gör knappen osynlig från början */
+  transition: opacity 0.5s ease-in-out; /* Lägg till transition för att fadea in knappen */
+}
+
+.main__btn--visible {
+  opacity: 1;
 }
 
 .dog__btn,
@@ -172,9 +179,11 @@ button:hover {
   margin: 0 2re;
 }
 .no-match {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  margin-top: 5rem;
-  grid-column: span 4;
 }
 
 .d-none {

@@ -19,7 +19,8 @@ function resetGame() {
   };
   isMatch = false;
 
-  if (mainBtn) mainBtn.classList.add(`d-none`);
+  if (mainBtn) mainBtn.classList.remove(`main__btn--visible`);
+  mainBtn.classList.add(`d-none`);
   if (ownerBtn) ownerBtn.classList.remove(`d-none`);
   if (dogBtn) dogBtn.classList.remove(`d-none`);
 
@@ -39,6 +40,7 @@ function resetGame() {
   dogContainerRef.style.backgroundColor = "";
 
   document.querySelector(`#perfectMatch`).classList.remove(`show`);
+  // document.querySelector(`#perfectMatch`).classList.add(`d-none`);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -118,14 +120,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (mainBtn) {
+    mainBtn.classList.add(`main__btn--visible`);
     mainBtn.addEventListener(`click`, () => {
       console.log(`main clicked`);
 
       resetGame();
     });
-  }
+    // }
 
-  if (dogBtn) {
+    // if (dogBtn) {
     dogBtn.addEventListener(`click`, async () => {
       console.log(`god btn clicked`);
       const dogImageUrl = await fetchUnsplashImage(`dogs`);
@@ -156,9 +159,9 @@ document.addEventListener("DOMContentLoaded", () => {
         perfectMatch();
       }, 100);
     });
-  }
+    // }
 
-  if (ownerBtn) {
+    // if (ownerBtn) {
     ownerBtn.addEventListener(`click`, async () => {
       const ownerImageUrl = await fetchUnsplashImage(`person`);
       document.querySelector(`#ownerImg`).src = ownerImageUrl;
@@ -206,15 +209,17 @@ document.addEventListener("DOMContentLoaded", () => {
       oGameData.dogColor === oGameData.ownerColor ||
       oGameData.selectedDogIndex === oGameData.selectedOwnerIndex
     ) {
+      document.querySelector(`#perfectMatch`).classList.remove(`d-none`);
       document.querySelector(`#perfectMatch`).classList.add(`show`);
 
       ownerBtn.classList.add(`d-none`);
       dogBtn.classList.add(`d-none`);
       console.log(`Perfect match!`);
       setTimeout(() => {
-        document.querySelector(`#perfectMatch`).classList.add(`d-none`);
         mainBtn.classList.remove(`d-none`);
+        mainBtn.classList.add(`main__btn--visible`);
         mainBtn.textContent = `Starta en ny matchning?`;
+        document.querySelector(`#perfectMatch`).classList.remove(`show`);
       }, 5000);
 
       saveMatch();
