@@ -42,10 +42,6 @@ function resetGame() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  //   const mainBtn = document.querySelector("#mainBtn");
-  //   const dogBtn = document.querySelector("#dogBtn");
-  //   const ownerBtn = document.querySelector("#ownerBtn");
-
   function randomBg() {
     let colors = [
       `#D32F2F`, // Mörk röd för bra kontrast
@@ -103,11 +99,22 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   async function fetchUnsplashImage(query) {
-    const response = await fetch(
+    return fetch(
       `https://api.unsplash.com/photos/random?query=${query}&client_id=l_l8WvWr1fQvt_EljVnWpSJM-Uu7SFzld2lplxFSP6E`
-    );
-    const data = await response.json();
-    return data.urls.regular;
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            `Nätverksfel: ${response.status} ${response.statusText}`
+          );
+        }
+        return response.json();
+      })
+      .then((data) => data.urls.regular)
+      .catch((error) => {
+        console.error("Fel vid hämtning av bild:", error);
+        return "./assets/Image-not-found.png"; // Returnera en lokal bild istället
+      });
   }
 
   if (mainBtn) {
@@ -120,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (dogBtn) {
     dogBtn.addEventListener(`click`, async () => {
+      console.log(`god btn clicked`);
       const dogImageUrl = await fetchUnsplashImage(`dogs`);
       document.querySelector(`#dogImg`).src = dogImageUrl;
       document.querySelector(`#dogImg`).classList.remove(`d-none`);
@@ -233,7 +241,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
     let prevMatches = JSON.parse(localStorage.getItem(`matches`)) || [];
 
     if (prevMatches.length === 0) {
-      let noMatch = `<p>Inga tidigare matchningar.</p>`;
+      let noMatch = `<p class="no-match">Inga tidigare matchningar.</p>`;
       matchContainerRef.innerHTML = noMatch;
     } else {
       prevMatches.forEach((match) => {
