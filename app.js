@@ -101,8 +101,9 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   async function fetchUnsplashImage(query) {
+    let key = `Insert your key`;
     return fetch(
-      `https://api.unsplash.com/photos/random?query=${query}&client_id=l_l8WvWr1fQvt_EljVnWpSJM-Uu7SFzld2lplxFSP6E`
+      `https://api.unsplash.com/photos/random?query=${query}&client_id=${key}`
     )
       .then((response) => {
         if (!response.ok) {
