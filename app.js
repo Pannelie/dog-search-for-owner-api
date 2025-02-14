@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   async function fetchUnsplashImage(query) {
-    let key = `Insert your key`;
+    let key = `Din personliga API nyckel`;
     return fetch(
       `https://api.unsplash.com/photos/random?query=${query}&client_id=${key}`
     )
